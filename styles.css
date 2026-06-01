@@ -17,6 +17,45 @@ html {
   scroll-behavior: smooth;
 }
 
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+html.motion-ready .reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+
+html.motion-ready .reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  will-change: transform, opacity;
+}
+
+html.motion-ready .reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  will-change: transform, opacity;
+}
+
+.parallax {
+  will-change: transform;
+}
+
 body {
   margin: 0;
   background: var(--paper);
@@ -587,5 +626,18 @@ h1 {
 
   .passions h3 {
     margin-top: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.motion-ready .reveal,
+  html.motion-ready .reveal-left,
+  html.motion-ready .reveal-right {
+    opacity: 1;
+    transform: none;
   }
 }
